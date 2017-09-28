@@ -3,7 +3,7 @@ Color recognizer for training neuronal network
 ==============================================
 Learning of naturally insteligent systems by
 classifying the color based on web camera
-input by support vector machine algorhytm.
+input by Decision Tree Classifier.
 
 Michael Tesar <michtesar@gmail.com>
 28-09-2017 Prague
