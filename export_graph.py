@@ -19,13 +19,8 @@ Michael Tesar <michtesar@gmail.com>
 import pickle
 from sklearn import tree
 
-clf = pickle.load(open('color_classifier.sav', 'rb'))
-tree.export_graphviz(clf, out_file='color_graph.dot')
+LABELS = ['red', 'green', 'blue', 'orange',
+          'yellow', 'violet', 'black', 'white']
 
-"""
-,
-feature_names=iris.feature_names,
-class_names=iris.target_names,
-filled=True, rounded=True,
-special_characters=True
-"""
+clf = pickle.load(open('color_classifier.sav', 'rb'))
+tree.export_graphviz(clf, out_file='color_graph.dot', class_names=LABELS, rounded=True)
