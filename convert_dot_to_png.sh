@@ -1,0 +1,1 @@
+dot -Tpng color_graph.dot -o color_model_graph.png
