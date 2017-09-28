@@ -72,4 +72,6 @@ into direction of file and run it by ```python3 color_recognizer.py```
 
 This is a real demo of early training (e.g., 50-60 per training images per color)
 
+![https://github.com/neuropacabra/ColorRecognizer/blob/doc/EA43654B-4331-441D-8A36-33743B1DE396.gif?raw=true](https://github.com/neuropacabra/ColorRecognizer/blob/doc/EA43654B-4331-441D-8A36-33743B1DE396.gif?raw=true)
+
 
