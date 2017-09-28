@@ -24,4 +24,6 @@ LABELS = ['red', 'green', 'blue', 'orange',
 
 clf = pickle.load(open('color_classifier.sav', 'rb'))
 tree.export_graphviz(clf, out_file='color_graph.dot',
-                     class_names=LABELS, rounded=True)
+                     feature_names=['Red', 'Green', 'Blue'],
+                     rounded=True, class_names=LABELS,
+                     filled=True, max_depth=5, proportion=True)
