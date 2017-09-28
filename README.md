@@ -31,7 +31,7 @@ annotate the color by him/her self by pressing the keyboard as follows:
 | Violet | v       |
 
 
-For quit the program just press ESC key while focused on main
+For quit the program just press <kbd>ESC</kbd> key while focused on main
 window.
 
 ## Neuronal network
