@@ -55,6 +55,12 @@ is trained again to strength the classification.
 
 This is link to [documentation page](http://scikit-learn.org/stable/modules/tree.html) to Decision Tree Classifier in Scikit-learn library.
 
+Decision tree classificator vizualization:
+
+
+![https://github.com/neuropacabra/ColorRecognizer/blob/doc/color_model_graph.png?raw=true](https://github.com/neuropacabra/ColorRecognizer/blob/doc/color_model_graph.png?raw=true)
+
+
 ## Dependecies
 
 - Python 3.6
@@ -73,4 +79,6 @@ into direction of file and run it by ```python3 color_recognizer.py```
 
 This is a real demo of early training (e.g., 50-60 per training images per color)
 
+
 ![https://github.com/neuropacabra/ColorRecognizer/blob/doc/cr_demo_training_01.gif?raw=true](https://github.com/neuropacabra/ColorRecognizer/blob/doc/cr_demo_training_01.gif?raw=true)
+
