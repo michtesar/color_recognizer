@@ -36,7 +36,7 @@ window.
 
 ## Neuronal network
 
-It was used a Decision Tree Classifier for training neuronal
+It was used a [Decision Tree Classifier](https://en.wikipedia.org/wiki/Decision_tree_learning) for training neuronal
 network because of it is easy interpretation and exploring
 the meaning of the classification at the begining.
 
