@@ -53,14 +53,15 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
 Each session is saved and on the start of another one classifier
 is trained again to strength the classification.
 
+This is link to [documentation page](http://scikit-learn.org/stable/modules/tree.html) to Decision Tree Classifier in Scikit-learn library.
+
 ## Dependecies
 
-Python 3.6
-OpenCV 2
-NumPy
-Scikit-learn
-
-Web camera (obviously)
+- Python 3.6
+- OpenCV 2
+- NumPy
+- Scikit-learn
+- Web camera (obviously)
 
 ## Running
 
@@ -72,6 +73,4 @@ into direction of file and run it by ```python3 color_recognizer.py```
 
 This is a real demo of early training (e.g., 50-60 per training images per color)
 
-![https://github.com/neuropacabra/ColorRecognizer/blob/doc/cr_demo_training_01.gif?raw=true](https://github.com/neuropacabra/ColorRecognizer/blob/doc/cr_demo_training_01.gif?raw=true)
-
-
+![https://github.com/neuropacabra/ColorRecognizer/blob/doc/EA43654B-4331-441D-8A36-33743B1DE396.gif?raw=true](https://github.com/neuropacabra/ColorRecognizer/blob/doc/EA43654B-4331-441D-8A36-33743B1DE396.gif?raw=true)
