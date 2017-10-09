@@ -13,6 +13,8 @@ Version 1.2.0
 
 import pickle
 from pathlib import Path
+import scipy.misc
+import uuid
 
 import cv2
 import numpy as np
@@ -20,6 +22,14 @@ from sklearn import tree
 
 LABELS = ['red', 'green', 'blue', 'orange',
           'yellow', 'violet', 'black', 'white']
+
+
+def save_image(img, color):
+    """
+    Save numpy array as image
+    """
+    id = uuid.uuid4()
+    scipy.misc.imsave((color + '_' + str(id) + '.jpg'), img)
 
 
 def save_classifier(clf):
@@ -118,34 +128,42 @@ def show_webcam():
         if key == ord('r'):
             np.savetxt(f, np.append(data, 0).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'r')
             print('Annotated as red')
         elif key == ord('g'):
             np.savetxt(f, np.append(data, 1).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'g')
             print('Annotated as green')
         elif key == ord('b'):
             np.savetxt(f, np.append(data, 2).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'b')
             print('Annotated as blue')
         elif key == ord('o'):
             np.savetxt(f, np.append(data, 3).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'o')
             print('Annotated as orange')
         elif key == ord('y'):
             np.savetxt(f, np.append(data, 4).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'y')
             print('Annotated as yellow')
         elif key == ord('v'):
             np.savetxt(f, np.append(data, 5).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'v')
             print('Annotated as violet')
         elif key == ord('k'):
             np.savetxt(f, np.append(data, 6).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'k')
             print('Annotated as black')
         elif key == ord('w'):
             np.savetxt(f, np.append(data, 7).reshape(
                 1, 4), fmt='%d', delimiter=',')
+            save_image(img, 'w')
             print('Annotated as white')
         elif key == 27:
             print('Closing the app...')
