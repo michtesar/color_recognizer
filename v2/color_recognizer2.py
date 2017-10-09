@@ -2,10 +2,11 @@ import wx
 import cv2
 import numpy as np
 import uuid
+import net
 
 class viewWindow(wx.Frame):
     def __init__(self, parent, title="Color Recognizer 2"):
-            wx.Frame.__init__(self, parent)        
+            wx.Frame.__init__(self, parent, size=(800, 600), style=wx.DEFAULT_DIALOG_STYLE | wx.MINIMIZE_BOX)        
 
             self.imgSizer = (800, 600)
             self.pnl = wx.Panel(self)
