@@ -1,6 +1,7 @@
 import wx
 import cv2
 import numpy as np
+import uuid
 
 class viewWindow(wx.Frame):
     def __init__(self, parent, title="Color Recognizer 2"):
@@ -18,7 +19,6 @@ class viewWindow(wx.Frame):
             self.capture = cv2.VideoCapture(0)
             ret, self.frame = self.capture.read()
             if ret:
-                print(np.size(self.frame))
                 self.height, self.width = self.frame.shape[:2]
                 self.bmp = wx.Bitmap.FromBuffer(self.width, self.height, self.frame)
                 self.timex = wx.Timer(self)
@@ -51,11 +51,12 @@ class viewWindow(wx.Frame):
     def OnClick(self, event):
         button_name = event.GetEventObject().GetLabel()
         print(button_name)
-        cv2.imwrite((button_name + '.jpg'), self.bmp)
+        cv2.imwrite((button_name + '_' + str(uuid.uuid4()) + '.jpg'), self.image)
         event.Skip()
 
     def redraw(self,e):
         ret, self.frame = self.capture.read()
+        self.image = self.frame
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
             self.bmp.CopyFromBuffer(self.frame)
