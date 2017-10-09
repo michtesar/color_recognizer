@@ -42,9 +42,10 @@ class viewWindow(wx.Frame):
             self.Bind(wx.EVT_BUTTON, self.OnClick)
 
             # Create statusbar
-            statusbar = self.CreateStatusBar(1)
             demotext = 'Classifier was loaded correctly! \t\t Most probably: Red \t\t Weights: 0.1, 2.3, 5.1 \t\t Image size: 800 x 600 px \t\t Average RGB: 255, 250, 124'
-            statusbar.SetStatusText(demotext)
+
+            self.statusbar = self.CreateStatusBar(1)
+            self.statusbar.SetStatusText(demotext)
 
             self.Show()
 
@@ -57,6 +58,7 @@ class viewWindow(wx.Frame):
     def redraw(self,e):
         ret, self.frame = self.capture.read()
         self.image = self.frame
+        self.status_dimension = np.shape(self.image)
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
             self.bmp.CopyFromBuffer(self.frame)
@@ -64,11 +66,14 @@ class viewWindow(wx.Frame):
             self.Refresh()
 
 def main():
-    app = wx.App()
-    frame = viewWindow(None)
-    frame.Center()
-    frame.Show()
-    app.MainLoop()
+    try:
+        app = wx.App()
+        frame = viewWindow(None)
+        frame.Center()
+        frame.Show()
+        app.MainLoop()
+    except:
+        app.Close()
 
 if __name__ == '__main__':
     main()
