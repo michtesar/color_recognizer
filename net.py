@@ -74,8 +74,9 @@ def identify_color(src_image, net):
     return str(class_names[int(p)])
 
 def weights_to_image(net):
-    print('We have a ' + str(np.size(net.coefs_)), ' weights')
+    # Only first layer is extracted
     weights = net.coefs_[0]
-    weights = weights.reshape(192, 108)
-    
-    return weights
+    weights_average = weights.mean(axis=1)
+    weights_image = weights_average.reshape(192, 108, 3)
+
+    return weights_image

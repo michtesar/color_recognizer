@@ -49,10 +49,10 @@ class viewWindow(wx.Frame):
             self.statusbar.SetStatusText('None')
 
             # Create weight vizualization
-            #png = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
-            #wx.StaticBitmap(self, -1, png, (10, 5), (png.GetWidth(), png.GetHeight()))
-            #print(net.weights_to_image(clf))
-
+            weights_image = net.weights_to_image(clf)
+            print(weights_image)
+            cv2.imshow('Weights in first hidden layer', gray_image)
+            
             self.Show()
 
     def OnClick(self, event):
