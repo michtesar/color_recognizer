@@ -1,6 +1,7 @@
 import os
 import cv2
-from sklearn.linear_model import perceptron
+#from sklearn.linear_model import perceptron
+from sklearn.neural_network import MLPClassifier
 import numpy as np
 
 # shape of image is 192*108*3, which is 62208 respahed into vector
@@ -59,23 +60,22 @@ def learn():
     y = integerize(training_labels)
     x = training_set
 
-    net = perceptron.Perceptron(max_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
+    #net = perceptron.Perceptron(max_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
+    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1)
 
     net.fit(x, y)
-    print(net.coef_)
 
     return net
 
 def identify_color(src_image, net):
     image_resised = src_image.reshape(1, 62208)
     p = net.predict(image_resised)
-    print(class_names[int(p)])
 
     return str(class_names[int(p)])
 
 def weights_to_image(net):
-    print('We have a ' + str(np.size(net.coef_)), ' weights')
-    weights = net.coef_[0]
+    print('We have a ' + str(np.size(net.coefs_)), ' weights')
+    weights = net.coefs_[0]
     weights = weights.reshape(192, 108)
     
     return weights
