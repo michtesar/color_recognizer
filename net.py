@@ -2,6 +2,7 @@ import os
 import cv2
 from sklearn.linear_model import perceptron
 import numpy as np
+# shape of image is 192*108*3, which is 62208 respahed into vector
 
 data_dir = 'training_set/'
 class_names = [
@@ -27,7 +28,7 @@ for file in os.listdir(data_dir):
     if file.endswith(".jpg"):
         img_file = os.path.join(data_dir, file)
         label_name = str(file).split('_')
-        training_set.append(cv2.imread(img_file, 1).reshape(2764800))
+        training_set.append(cv2.imread(img_file, 1).reshape(62208))
         training_labels.append(label_name[0])
         n_files += 1
 
@@ -60,9 +61,14 @@ x = training_set
 print(np.shape(x))
 
 net = perceptron.Perceptron(n_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
+
 net.fit(x, y)
 
-predict = training_set.append(cv2.imread('training_set/Blue_training.jpg', 1).reshape(2764800))
+predict_image = cv2.imread('training_set/Black_predicting.jpg', 1).reshape(1,62208)
 
-p = net.predict(predict)
+print(np.shape(x))
+print(np.shape(y))
+print(np.shape(predict_image))
+
+p = net.predict(predict_image)
 print(p)
