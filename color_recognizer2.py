@@ -2,7 +2,6 @@ import wx
 import cv2
 import numpy as np
 import uuid
-import net
 import os
 
 class viewWindow(wx.Frame):
@@ -60,6 +59,7 @@ class viewWindow(wx.Frame):
 
     def redraw(self,e):
         ret, self.frame = self.capture.read()
+        self.frame = cv2.flip(self.frame, 1)
         self.image = self.frame
         self.status_dimension = np.shape(self.image)
         if ret:
