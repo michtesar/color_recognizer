@@ -17,12 +17,14 @@ class_names = [
     "Yellow",
     "Purple",
 ]
-def learn():
-    if (os.path.isdir(data_dir)):
-        print('Training set folder was found')
-    else:
-        print('There is no traing set folder in root')
 
+if (os.path.isdir(data_dir)):
+    print('Training set folder was found')
+else:
+    print('There is no traing set folder in root')
+
+def learn():
+    print('Loading previous dataset to learn')
     n_files = 0
     training_set = list()
     training_labels = list()
@@ -61,9 +63,12 @@ def learn():
     x = training_set
 
     #net = perceptron.Perceptron(max_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
-    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1)
+    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1, verbose=True)
 
+    print('\nLearning...\n')
     net.fit(x, y)
+
+    print('MLP has already learned previous instances')
 
     return net
 

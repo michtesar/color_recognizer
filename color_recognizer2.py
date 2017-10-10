@@ -50,8 +50,9 @@ class viewWindow(wx.Frame):
 
             # Create weight vizualization
             weights_image = net.weights_to_image(clf)
-            print(weights_image)
-            cv2.imshow('Weights in first hidden layer', gray_image)
+            weights_R = weights_image[:,:,0]
+            weights_G = weights_image[:,:,1]
+            weights_B = weights_image[:,:,2]
             
             self.Show()
 
