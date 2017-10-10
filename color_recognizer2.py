@@ -48,6 +48,11 @@ class viewWindow(wx.Frame):
             self.statusbar = self.CreateStatusBar(1)
             self.statusbar.SetStatusText('None')
 
+            # Create weight vizualization
+            #png = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
+            #wx.StaticBitmap(self, -1, png, (10, 5), (png.GetWidth(), png.GetHeight()))
+            print(net.weights_to_image(clf))
+
             self.Show()
 
     def OnClick(self, event):

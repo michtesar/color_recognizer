@@ -59,11 +59,10 @@ def learn():
     y = integerize(training_labels)
     x = training_set
 
-    print(np.shape(x))
-
     net = perceptron.Perceptron(max_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
 
     net.fit(x, y)
+    print(net.coef_)
 
     return net
 
@@ -73,3 +72,10 @@ def identify_color(src_image, net):
     print(class_names[int(p)])
 
     return str(class_names[int(p)])
+
+def weights_to_image(net):
+    print('We have a ' + str(np.size(net.coef_)), ' weights')
+    weights = net.coef_[0]
+    weights = weights.reshape(192, 108)
+    
+    return weights
