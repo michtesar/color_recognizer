@@ -82,6 +82,6 @@ def weights_to_image(net):
     # Only first layer is extracted
     weights = net.coefs_[0]
     weights_average = weights.mean(axis=1)
-    weights_image = weights_average.reshape(192, 108, 3)
+    weights_image = weights_average.reshape(108, 192, 3)
     np.save('weights.npy', weights_image)
     return weights_image

@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import uuid
 import os
+import vizualizator
 
 import net
 clf = net.learn()
@@ -50,10 +51,8 @@ class viewWindow(wx.Frame):
 
             # Create weight vizualization
             weights_image = net.weights_to_image(clf)
-            weights_R = weights_image[:,:,0]
-            weights_G = weights_image[:,:,1]
-            weights_B = weights_image[:,:,2]
-            
+            vizualizator.show_first_hidden_layer(weights_image)
+
             self.Show()
 
     def OnClick(self, event):
