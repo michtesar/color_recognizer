@@ -60,7 +60,7 @@ class viewWindow(wx.Frame):
     def redraw(self,e):
         ret, self.frame = self.capture.read()
         self.frame = cv2.flip(self.frame, 1)
-        self.image = self.frame
+        self.image = cv2.resize(self.frame, (0, 0), fx=0.15, fy=0.15)
         self.status_dimension = np.shape(self.image)
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
