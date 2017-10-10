@@ -83,5 +83,5 @@ def weights_to_image(net):
     weights = net.coefs_[0]
     weights_average = weights.mean(axis=1)
     weights_image = weights_average.reshape(192, 108, 3)
-
+    np.save('weights.npy', weights_image)
     return weights_image
