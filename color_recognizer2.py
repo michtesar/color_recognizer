@@ -4,10 +4,12 @@ import numpy as np
 import uuid
 import os
 
+import net
+clf = net.learn()
+
 class viewWindow(wx.Frame):
     def __init__(self, parent, title="Color Recognizer 2"):
             wx.Frame.__init__(self, parent, size=(800, 600), style=wx.DEFAULT_DIALOG_STYLE | wx.MINIMIZE_BOX)        
-
             self.imgSizer = (800, 600)
             self.pnl = wx.Panel(self)
             self.vbox = wx.BoxSizer(wx.VERTICAL)
@@ -43,10 +45,8 @@ class viewWindow(wx.Frame):
             self.Bind(wx.EVT_BUTTON, self.OnClick)
 
             # Create statusbar
-            demotext = 'Classifier was loaded correctly! \t\t Most probably: Red \t\t Weights: 0.1, 2.3, 5.1 \t\t Image size: 800 x 600 px \t\t Average RGB: 255, 250, 124'
-
             self.statusbar = self.CreateStatusBar(1)
-            self.statusbar.SetStatusText(demotext)
+            self.statusbar.SetStatusText('None')
 
             self.Show()
 
@@ -61,6 +61,7 @@ class viewWindow(wx.Frame):
         ret, self.frame = self.capture.read()
         self.frame = cv2.flip(self.frame, 1)
         self.image = cv2.resize(self.frame, (0, 0), fx=0.15, fy=0.15)
+        self.statusbar.SetStatusText(str(net.identify_color(self.image, clf)))
         self.status_dimension = np.shape(self.image)
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
