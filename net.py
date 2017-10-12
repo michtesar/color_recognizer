@@ -61,7 +61,7 @@ def learn():
     x = training_set
     y = integerize(training_labels)
 
-    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1, verbose=False)
+    net = MLPClassifier()
 
     print('\nLearning...\n')
     net.fit(x, y)

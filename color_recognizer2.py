@@ -68,6 +68,7 @@ class viewWindow(wx.Frame):
             self.statusbar.SetStatusText(str(net.identify_color(self.image, clf)))
         except:
             print('Cannot identify color. No classifier found')
+        print('Color:\t' + str(net.identify_color(self.image, clf)))
 
         self.status_dimension = np.shape(self.image)
         if ret:
