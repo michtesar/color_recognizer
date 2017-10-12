@@ -4,6 +4,7 @@ import numpy as np
 import uuid
 import os
 import vizualizator
+import tools
 
 import net
 try:
@@ -69,6 +70,15 @@ class viewWindow(wx.Frame):
         except:
             print('Cannot identify color. No classifier found')
         print('Color:\t' + str(net.identify_color(self.image, clf)))
+
+        # Partial fit color
+        """
+        color = net.identify_color(self.image, clf)
+        image = self.image.reshape(1, 6912)
+        color_int = tools.integerize(color)
+        """
+        clf.fit(image, color_int)
+        print(clf)
 
         self.status_dimension = np.shape(self.image)
         if ret:

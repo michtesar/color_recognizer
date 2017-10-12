@@ -2,6 +2,7 @@ import os
 import cv2
 from sklearn.neural_network import MLPClassifier
 import numpy as np
+import tools
 
 # shape of image is 36*64*3, which is 6912 respahed into vector
 
@@ -34,32 +35,9 @@ def learn():
             training_set.append(cv2.imread(img_file, 1).reshape(6912))
             training_labels.append(label_name[0])
             n_files += 1
-
-
-    def integerize(data):
-        Y = list()
-        for i in range(n_files):
-            a = data[i]
-            if a == 'Black':
-                Y.append(0)
-            elif a == 'White':
-                Y.append(1)
-            elif a == 'Red':
-                Y.append(2)
-            elif a == 'Green':
-                Y.append(3)
-            elif a == 'Blue':
-                Y.append(4)
-            elif a == 'Orange':
-                Y.append(5)
-            elif a == 'Yellow':
-                Y.append(6)
-            elif a == 'Purple':
-                Y.append(7)    
-        return Y
     
     x = training_set
-    y = integerize(training_labels)
+    y = tools.integerize(training_labels)
 
     net = MLPClassifier()
 
