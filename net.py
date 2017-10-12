@@ -4,7 +4,7 @@ import cv2
 from sklearn.neural_network import MLPClassifier
 import numpy as np
 
-# shape of image is 192*108*3, which is 62208 respahed into vector
+# shape of image is 36*64*3, which is 6912 respahed into vector
 
 data_dir = 'training_set/'
 class_names = [
@@ -32,7 +32,7 @@ def learn():
         if file.endswith(".jpg"):
             img_file = os.path.join(data_dir, file)
             label_name = str(file).split('_')
-            training_set.append(cv2.imread(img_file, 1).reshape(62208))
+            training_set.append(cv2.imread(img_file, 1).reshape(6912))
             training_labels.append(label_name[0])
             n_files += 1
 
@@ -73,7 +73,7 @@ def learn():
     return net
 
 def identify_color(src_image, net):
-    image_resised = src_image.reshape(1, 62208)
+    image_resised = src_image.reshape(1, 6912)
     p = net.predict(image_resised)
 
     return str(class_names[int(p)])
@@ -82,6 +82,6 @@ def weights_to_image(net):
     # Only first layer is extracted
     weights = net.coefs_[0]
     weights_average = weights.mean(axis=1)
-    weights_image = weights_average.reshape(108, 192, 3)
+    weights_image = weights_average.reshape(64, 36, 3)
     np.save('weights.npy', weights_image)
     return weights_image

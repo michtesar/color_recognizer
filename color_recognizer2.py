@@ -6,7 +6,10 @@ import os
 import vizualizator
 
 import net
-clf = net.learn()
+try:
+    clf = net.learn()
+except:
+    print('No source image to learn. Annotate some first.')
 
 class viewWindow(wx.Frame):
     def __init__(self, parent, title="Color Recognizer 2"):
@@ -50,8 +53,11 @@ class viewWindow(wx.Frame):
             self.statusbar.SetStatusText('None')
 
             # Create weight vizualization
-            weights_image = net.weights_to_image(clf)
-            vizualizator.show_first_hidden_layer(weights_image)
+            try:
+                weights_image = net.weights_to_image(clf)
+                vizualizator.show_first_hidden_layer(weights_image)
+            except:
+                print('Cannot vizualize weights because I have trained net')
 
             self.Show()
 
@@ -65,8 +71,12 @@ class viewWindow(wx.Frame):
     def redraw(self,e):
         ret, self.frame = self.capture.read()
         self.frame = cv2.flip(self.frame, 1)
-        self.image = cv2.resize(self.frame, (0, 0), fx=0.15, fy=0.15)
-        self.statusbar.SetStatusText(str(net.identify_color(self.image, clf)))
+        self.image = cv2.resize(self.frame, (0, 0), fx=0.05, fy=0.05)
+        try:
+            self.statusbar.SetStatusText(str(net.identify_color(self.image, clf)))
+        except:
+            print('Cannot identify color. No classifier found')
+            
         self.status_dimension = np.shape(self.image)
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
