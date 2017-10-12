@@ -7,9 +7,9 @@ def load_dummy_data():
     return weights_image
 
 def extract_rgb(data):
-    mean_R = data[:,:,0].mean()
-    mean_G = data[:,:,1].mean()
-    mean_B = data[:,:,2].mean()
+    mean_R = data[:,:,0]
+    mean_G = data[:,:,1]
+    mean_B = data[:,:,2]
 
     return mean_R, mean_G, mean_B
 
