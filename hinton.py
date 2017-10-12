@@ -36,13 +36,23 @@ def hinton(matrix, max_weight=None, ax=None):
     ax.autoscale_view()
     ax.invert_yaxis()
 
+    return ax
+
+
 data = vizualizator.load_dummy_data()
 average_image = vizualizator.extract_average_color(data)
 
 r, g, b = vizualizator.extract_rgb(data)
-average_image = b
 
-#normalized = vizualizator.normalize_to_greyscale(average_image)
-
-h = hinton(r)
+fig = plt.figure()
+fig.suptitle("Weights of first hidden layer", fontsize=16)
+plt.subplot(1, 3, 1)
+hinton(r)
+plt.title('Red channel')
+plt.subplot(1, 3, 2)
+hinton(g)
+plt.title('Green channel')
+plt.subplot(1, 3, 3)
+hinton(b)
+plt.title('Blue channel')
 plt.show()

@@ -1,6 +1,5 @@
 import os
 import cv2
-#from sklearn.linear_model import perceptron
 from sklearn.neural_network import MLPClassifier
 import numpy as np
 
@@ -58,12 +57,11 @@ def learn():
             elif a == 'Purple':
                 Y.append(7)    
         return Y
-
-    y = integerize(training_labels)
+    
     x = training_set
+    y = integerize(training_labels)
 
-    #net = perceptron.Perceptron(max_iter=100, verbose=0, random_state=None, fit_intercept=True, eta0=0.002)
-    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1, verbose=True)
+    net = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), random_state=1, verbose=False)
 
     print('\nLearning...\n')
     net.fit(x, y)

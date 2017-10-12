@@ -51,14 +51,6 @@ class viewWindow(wx.Frame):
             # Create statusbar
             self.statusbar = self.CreateStatusBar(1)
             self.statusbar.SetStatusText('None')
-
-            # Create weight vizualization
-            try:
-                weights_image = net.weights_to_image(clf)
-                vizualizator.show_first_hidden_layer(weights_image)
-            except:
-                print('Cannot vizualize weights because I have trained net')
-
             self.Show()
 
     def OnClick(self, event):
@@ -76,7 +68,7 @@ class viewWindow(wx.Frame):
             self.statusbar.SetStatusText(str(net.identify_color(self.image, clf)))
         except:
             print('Cannot identify color. No classifier found')
-            
+
         self.status_dimension = np.shape(self.image)
         if ret:
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
